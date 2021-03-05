@@ -17,19 +17,19 @@ function displayJSON(json) {
   var base = JSON.parse(JSON.stringify(json, undefined, 2));
   for (var key in base) {
     for (var key2 in key) {
-      const barcode = {};
+      var barcode = document.createElementNS("http://www.w3.org/2000/svg", "svg");
       JsBarcode(barcode, base[key][key2]["Barcode"], {
         format: "EAN13",
         background: "none",
       });
+      console.log(barcode);
       var html =
         '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Document</title></head><body><section class="main"><div class="name">' +
         base[key][key2]["Name"] +
         '</div><div class="company">' +
         base[key][key2]["Company"] +
-        '</div><div class="barcode"><svg>' +
-        barcode +
-        '</svg></div></section><style>.main{width:700px;height:1000px;background-image:url(image/ticket.png);background-size:contain;background-repeat:no-repeat;margin:0 auto}.name{padding-top:230px;padding-left:500px;font-size:24px}.company{padding-left:500px;font-size:24px}.barcode{padding-top:175px;padding-left:560px}</style></body></html>';
+        '</div><div class="barcode">'+barcode+
+        '</div></section><style>.main{width:700px;height:1000px;background-image:url(image/ticket.png);background-size:contain;background-repeat:no-repeat;margin:0 auto}.name{padding-top:230px;padding-left:500px;font-size:24px}.company{padding-left:500px;font-size:24px}.barcode{padding-top:175px;padding-left:560px}</style></body></html>';
       /* var html = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Document</title></head><body><section class="main"><div class="name">'+base[key][key2]['Name']+'</div><div class="company">'+base[key][key2]['Company']+'</div><div class="barcode"><svg>'+barcode+'</svg></div></section><style>@font-face{font-family:DINPro-CondensedMedium;src:local("DINPro-CondensedMedium"),url(https://nomail.com.ua/files/woff/bf27039ecba4e6511abddd84122a8aac.woff) format("woff")}body{font-family:DINPro-CondensedMedium}.main{width:700px;height:1000px;background-image:url(image/ticket.png);background-size:contain;background-repeat:no-repeat;margin:0 auto}.name{padding-top:230px;padding-left:500px;font-size:24px}.company{padding-left:500px;font-size:24px}.barcode{padding-top:175px;padding-left:560px}</style></body></html>'; */
       //console.log(barcode);
       document.querySelector("#result").innerHTML = html;
