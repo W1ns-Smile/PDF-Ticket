@@ -33,7 +33,7 @@ function displayJSON(json) {
       /* var html = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Document</title></head><body><section class="main"><div class="name">'+base[key][key2]['Name']+'</div><div class="company">'+base[key][key2]['Company']+'</div><div class="barcode"><svg>'+barcode+'</svg></div></section><style>@font-face{font-family:DINPro-CondensedMedium;src:local("DINPro-CondensedMedium"),url(https://nomail.com.ua/files/woff/bf27039ecba4e6511abddd84122a8aac.woff) format("woff")}body{font-family:DINPro-CondensedMedium}.main{width:700px;height:1000px;background-image:url(image/ticket.png);background-size:contain;background-repeat:no-repeat;margin:0 auto}.name{padding-top:230px;padding-left:500px;font-size:24px}.company{padding-left:500px;font-size:24px}.barcode{padding-top:175px;padding-left:560px}</style></body></html>'; */
       //console.log(barcode);
       document.querySelector("#result").innerHTML = html;
-      html2canvas(document.querySelector("#result"), {useCORS: true, allowTaint: true, foreignObjectRendering: true}).then(function(canvas) {
+      html2canvas(document.querySelector("#result"), {useCORS: true, allowTaint: true}).then(function(canvas) {
         let img = new Image();
         img.src = canvas.toDataURL('image/png');
         img.onload = function () {
